@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Air BnB Price Prediction</title>
+</head>
+<body>
+    <form action="{{url_for('regression')}}" method="POST" enctype="multipart/form-data">
+        <div class="neighbourhood_cleansed setDistance">
+            <label for="neighbourhood">Neighbourhood</label>
+            <div class="input-group">
+                <select name="neighbourhood_cleansed" id="neighbourhood_cleansed">
+                    {% for items in range(neighbourhood_cleansedLen) %}
+                    <option value="{{items}}">{{neighbourhood_cleansed[items]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+        </div>
+        
+        <div class="room_type setDistance">
+            <label for="roomType">Room Type</label>
+            <div class="input-group">
+                <select name="room_type" id="room_type">
+                    {% for items in range(room_typeLen) %}
+                    <option value="{{items}}">{{room_type[items]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="property_type setDistance">
+            <label for="propertyType">Property Type</label>
+            <div class="input-group">
+                <select name="property_type" id="property_type">
+                    {% for items in range(property_typeLen) %}
+                    <option value="{{items}}">{{property_type[items]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="accomodates setDistance">
+            <label for="accomodates">Accomodates</label>
+            <div class="input-group">
+                <input type="number" id="accomodates" name="accomodates" min="1" value="1" required >
+            </div>
+        </div>
+
+        <div class="bathrooms_text setDistance">
+            <label for="bathrooms_text">Bathrooms</label>
+            <div class="input-group">
+                <input type="number" id="bathrooms_text" name="bathrooms_text" min="1" value="1" required>
+            </div>
+        </div>
+
+        <div class="bedrooms setDistance">
+            <label for="bedrooms">Bedrooms</label>
+            <div class="input-group">
+                <input type="number" id="bedrooms" name="bedrooms" min="1" value="1" required>
+            </div>
+        </div>
+
+        <div class="beds setDistance">
+            <label for="beds">Beds</label>
+            <div class="input-group">
+                <input type="number" id="beds" name="beds" min="1" value="1" required>
+            </div>
+        </div>
+        
+        <div class="number_of_reviews setDistance">
+            <label for="number_of_reviews">Number of Reviews</label>
+            <div class="input-group">
+                <input type="number" id="number_of_reviews" name="number_of_reviews" min="0" value="0" required>
+            </div>
+        </div>
+        
+        <div class="review_scores_rating setDistance">
+            <label for="review_scores_rating">Review Scores Rating</label>
+            <div class="input-group">
+                <input type="number" id="review_scores_rating" name="review_scores_rating" min="1" value="1" required>
+            </div>
+        </div>
+        <div class="amenities">
+            {% for items in range(amenitiesLen) %}
+            <div class="amenities setDistance">
+                <input type="checkbox" id={{amenities[items]}} name={{amenities[items]}} value="1">
+                <label for={{amenities[items]}}>{{amenities[items]}}</label>
+                <br style="clear:both">
+            </div>
+            {% endfor %}
+        </div>
+            
+        <div class="submit setDistance">
+            <input type="submit" name="Submit" value="Submit">
+        </div>
+
+    </form>
+</body>
+<style>
+    body{
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    label{
+        padding-left: 2px;
+        padding-right: 10px;
+
+    }
+    .setDistance{
+        margin-top: 10px
+    }
+    .submit{
+        margin-bottom: 10px;
+    }
+</style>
+</html>
