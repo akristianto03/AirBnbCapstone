@@ -4,117 +4,178 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>Air BnB Price Prediction</title>
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    
+    <title>Airbnb Price Predictor</title>
+
+    <!-- jquery -->
+    <script src="{{ url_for('static',filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
 </head>
 <body>
-    <form action="{{url_for('regression')}}" method="POST" enctype="multipart/form-data">
-        <div class="neighbourhood_cleansed setDistance">
-            <label for="neighbourhood">Neighbourhood</label>
-            <div class="input-group">
-                <select name="neighbourhood_cleansed" id="neighbourhood_cleansed">
-                    {% for items in range(neighbourhood_cleansedLen) %}
-                    <option value="{{items}}">{{neighbourhood_cleansed[items]}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            
-        </div>
-        
-        <div class="room_type setDistance">
-            <label for="roomType">Room Type</label>
-            <div class="input-group">
-                <select name="room_type" id="room_type">
-                    {% for items in range(room_typeLen) %}
-                    <option value="{{items}}">{{room_type[items]}}</option>
-                    {% endfor %}
-                </select>
+        <div class=" min-vh-100 bg-airbnb bg-gradient d-flex">
+            <div class=" d-flex justify-content-center w-100 align-self-center">
+                <div class=" d-flex flex-column">
+                    <img src=" {{ url_for('static',filename='img/bnb.png') }}" class=" m-auto w-75" alt="">
+                    <h1 class=" fw-bold text-white text-center">Aidbnb Price Predictor</h1>
+                    <div class="m-auto">
+                        <p class=" text-center text-light">
+                            Hitung prediksi harga air bnb secara akurat hanya disini.
+                        </p>
+                    </div>
+                    <a href="#predict" class="btn btn-primary">
+                        <h4 class=" m-0 fw-bold text-white">
+                            Lets Gooo
+                        </h4>
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="property_type setDistance">
-            <label for="propertyType">Property Type</label>
-            <div class="input-group">
-                <select name="property_type" id="property_type">
-                    {% for items in range(property_typeLen) %}
-                    <option value="{{items}}">{{property_type[items]}}</option>
-                    {% endfor %}
-                </select>
+        <div class=" container-fluid bg-light py-4" id="predict">
+            <div class="container bg-white rounded-3 shadow m-auto px-4 pb-5 pt-4">
+                <h2 class=" fw-bold">Airbnb Price Predictor</h2>
+                <hr>
+                <!-- form -->
+                <form action="{{url_for('regression')}}" method="POST" enctype="multipart/form-data">
+                    <div class="form-group d-flex align-items-center mb-3">
+                        <div class="col-3">
+                            <h6 class=" fw-bold ">Neighbourhood</h6>
+                        </div>
+                        <div>
+                            <h6 class=" fw-bold ">:</h6>
+                        </div>
+                        <select name="neighbourhood_cleansed" id="neighbourhood_cleansed" class="form-control mx-2">
+                            {% for items in range(neighbourhood_cleansedLen) %}
+                            <option value="{{items}}">{{neighbourhood_cleansed[items]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group d-flex align-items-center mb-3">
+                        <div class="col-3">
+                            <h6 class=" fw-bold ">Room Type</h6>
+                        </div>
+                        <div>
+                            <h6 class=" fw-bold">:</h6>
+                        </div>
+                        <select name="room_type" id="room_type" class="form-control mx-2">
+                            {% for items in range(room_typeLen) %}
+                            <option value="{{items}}">{{room_type[items]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group d-flex align-items-center mb-3">
+                        <div class="col-3">
+                            <h6 class=" fw-bold ">Property Type</h6>
+                        </div>
+                        <div>
+                            <h6 class=" fw-bold">:</h6>
+                        </div>
+                        <select name="property_type" id="property_type" class="form-control mx-2">
+                            {% for items in range(property_typeLen) %}
+                            <option value="{{items}}">{{property_type[items]}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <!-- double -->
+                    <div class=" row justify-content-lg-between mb-3">
+                        <div class="form-group d-flex align-items-center w-50">
+                            <div class="col-3">
+                                <h6 class=" fw-bold ">Accomodates</h6>
+                            </div>
+                            <div>
+                                <h6 class=" fw-bold">:</h6>
+                            </div>
+                            <input type="number" class="form-control mx-2" id="accomodates" name="accomodates" min="1" value="1" required>
+                        </div>
+                        <div class="form-group d-flex align-items-center w-50">
+                            <div class="col-3">
+                                <h6 class=" fw-bold ">Bathrooms</h6>
+                            </div>
+                            <div>
+                                <h6 class=" fw-bold">:</h6>
+                            </div>
+                                <input type="number" class="form-control mx-2" id="bathrooms_text" name="bathrooms_text" min="1" value="1" required>
+                        </div>
+                    </div>
+                    <!-- double -->
+                    <div class=" row justify-content-lg-between mb-3">
+                        <div class="form-group d-flex align-items-center w-50">
+                            <div class="col-3">
+                                <h6 class=" fw-bold ">Bedrooms</h6>
+                            </div>
+                            <div>
+                                <h6 class=" fw-bold">:</h6>
+                            </div>
+                            <input type="number" class="form-control mx-2" id="bedrooms" name="bedrooms" min="1" value="1" required>
+                        </div>
+                        <div class="form-group d-flex align-items-center w-50">
+                            <div class="col-3">
+                                <h6 class=" fw-bold ">Beds</h6>
+                            </div>
+                            <div>
+                                <h6 class=" fw-bold">:</h6>
+                            </div>
+                            <input type="number" class="form-control mx-2" id="beds" name="beds" min="1" value="1" required>
+                        </div>
+                    </div>
+                    <!-- double -->
+                    <div class=" row justify-content-lg-between mb-3">
+                        <div class="form-group d-flex align-items-center w-50">
+                            <div class="col-3">
+                                <h6 class=" fw-bold ">Number of Reviews</h6>
+                            </div>
+                            <div>
+                                <h6 class=" fw-bold">:</h6>
+                            </div>
+                            <input type="number" class="form-control mx-2" id="number_of_reviews" name="number_of_reviews" min="0" value="0" required>
+                        </div>
+                        <div class="form-group d-flex align-items-center w-50">
+                            <div class="col-3">
+                                <h6 class=" fw-bold ">Review Scores Rating</h6>
+                            </div>
+                            <div>
+                                <h6 class=" fw-bold">:</h6>
+                            </div>
+                                <input type="number" class="form-control mx-2" id="review_scores_rating" name="review_scores_rating" min="1" value="1" required>
+                        </div>
+                    </div>
+                    <div class=" mb-3">
+                        <h6 class=" fw-bold">
+                            Facilities
+                        </h6>
+                        <div class=" d-flex flex-wrap">
+                            {% for items in range(amenitiesLen) %}
+                            <div class=" d-flex mx-2 mb-3 bg-check p-2 rounded-3">
+                                <input type="checkbox" id={{amenities[items]}} name={{amenities[items]}} value="1">
+                                <label for="{{amenities[items]}}" class="mx-2">{{amenities[items]}}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5 d-flex flex-column">
+                        <button type="submit" class="btn btn-primary text-white py-3">
+                            <h5 class="m-0 fw-bold">
+                                Predict
+                            </h5>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <div class="accomodates setDistance">
-            <label for="accomodates">Accomodates</label>
-            <div class="input-group">
-                <input type="number" id="accomodates" name="accomodates" min="1" value="1" required >
+        <footer class="bg-danger text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="text-center p-3 text-white" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2022 Copyright:
+                <a class="text-white" href="/">Technospire</a>
             </div>
-        </div>
+            <!-- Copyright -->
+        </footer>
 
-        <div class="bathrooms_text setDistance">
-            <label for="bathrooms_text">Bathrooms</label>
-            <div class="input-group">
-                <input type="number" id="bathrooms_text" name="bathrooms_text" min="1" value="1" required>
-            </div>
-        </div>
-
-        <div class="bedrooms setDistance">
-            <label for="bedrooms">Bedrooms</label>
-            <div class="input-group">
-                <input type="number" id="bedrooms" name="bedrooms" min="1" value="1" required>
-            </div>
-        </div>
-
-        <div class="beds setDistance">
-            <label for="beds">Beds</label>
-            <div class="input-group">
-                <input type="number" id="beds" name="beds" min="1" value="1" required>
-            </div>
-        </div>
-        
-        <div class="number_of_reviews setDistance">
-            <label for="number_of_reviews">Number of Reviews</label>
-            <div class="input-group">
-                <input type="number" id="number_of_reviews" name="number_of_reviews" min="0" value="0" required>
-            </div>
-        </div>
-        
-        <div class="review_scores_rating setDistance">
-            <label for="review_scores_rating">Review Scores Rating</label>
-            <div class="input-group">
-                <input type="number" id="review_scores_rating" name="review_scores_rating" min="1" value="1" required>
-            </div>
-        </div>
-        <div class="amenities">
-            {% for items in range(amenitiesLen) %}
-            <div class="amenities setDistance">
-                <input type="checkbox" id={{amenities[items]}} name={{amenities[items]}} value="1">
-                <label for={{amenities[items]}}>{{amenities[items]}}</label>
-                <br style="clear:both">
-            </div>
-            {% endfor %}
-        </div>
-            
-        <div class="submit setDistance">
-            <input type="submit" name="Submit" value="Submit">
-        </div>
-
-    </form>
+    <!-- bootstrap script -->
+    <script src="{{ url_for('static',filename='node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 </body>
-<style>
-    body{
-        margin-left: 20px;
-        margin-top: 20px;
-    }
-    label{
-        padding-left: 2px;
-        padding-right: 10px;
-
-    }
-    .setDistance{
-        margin-top: 10px
-    }
-    .submit{
-        margin-bottom: 10px;
-    }
-</style>
 </html>

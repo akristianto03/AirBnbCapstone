@@ -1,0 +1,24 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+// Theming
+$theme-colors: ("airbnb": #FF585D,
+    "success": #A6D849,
+    "primary": #27B0F9,
+    "warning": #F9AD3B,
+    "danger": #EF62AB,
+);
+
+.bg-airbnb {
+    --bs-bg-opacity: 1;
+    background-color: rgba(#FF585D, 1) !important
+}
+
+.bg-check {
+    --bs-bg-opacity: 1;
+    background-color: rgba(#E8E8E8, 1) !important
+}
+
+
+//last
+@import "../node_modules/bootstrap/scss/bootstrap.scss";

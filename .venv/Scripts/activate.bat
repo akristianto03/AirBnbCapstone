@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\UC\IMT\Semester5\Big Data\AirBnb-web\.venv
+set VIRTUAL_ENV=E:\Uciputra\Semester 5\Big Data\UAS\web project hans\AirBnbCapstone\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 

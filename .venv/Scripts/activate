@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\UC\IMT\Semester5\Big Data\AirBnb-web\.venv"
+VIRTUAL_ENV="E:\Uciputra\Semester 5\Big Data\UAS\web project hans\AirBnbCapstone\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
